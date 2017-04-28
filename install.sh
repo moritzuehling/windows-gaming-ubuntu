@@ -13,6 +13,10 @@ install -D -m644 misc/windows.service $pkgdir/lib/systemd/system/windows.service
 install -D -m644 misc/windows.service $pkgdir/lib/systemd/user/windows.service
 install -D -m644 misc/80-vfio.rules $pkgdir/lib/udev/rules.d/80-vfio.rules
 
+
+# Fix an ubuntu-bug
+sudo setcap cap_net_admin+ep /usr/lib/qemu/qemu-bridge-helper
+
 groupadd --system vfio
 usermod -aG vfio $USER
 
